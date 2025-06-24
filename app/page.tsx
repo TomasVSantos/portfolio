@@ -30,50 +30,20 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory management and payment processing.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "#",
-      codeUrl: "#",
+      title: "Portfolio",
+      description: "This exact website you are looking at right now!",
+      image: "https://6b4ysh6u19.ufs.sh/f/Q1LXecKPH6vKvMDpthsObfGhCyr04dNuxgtFkKnsYe2cAm9Z",
+      technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
+      liveUrl: "https://tomasvsantos.pt",
+      codeUrl: "https://github.com/TomasVSantos/portfolio",
       featured: true,
-    },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "Collaborative project management tool with real-time updates and team collaboration features.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-      liveUrl: "#",
-      codeUrl: "#",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "Interactive weather application with location-based forecasts and data visualization.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["Vue.js", "Chart.js", "OpenWeather API"],
-      liveUrl: "#",
-      codeUrl: "#",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "Social Media Analytics",
-      description: "Analytics dashboard for social media performance tracking and insights.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: ["React", "D3.js", "Express", "Redis"],
-      liveUrl: "#",
-      codeUrl: "#",
-      featured: false,
     },
   ];
 
   const skills = [
     { name: "JavaScript", icon: Code },
     { name: "TypeScript", icon: Code },
-    { name: "React", icon: Globe },
+    { name: "React/Next.js", icon: Globe },
     { name: "Node.js", icon: Database },
     { name: "Python", icon: Code },
     { name: ".NET", icon: Code },
@@ -323,9 +293,9 @@ export default function Portfolio() {
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-48 object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0" />
                   </div>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
@@ -349,7 +319,11 @@ export default function Portfolio() {
                           Live Demo
                         </a>
                       </Button>
-                      <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 flex-1">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-white/30 text-gradient-to-r from-purple-500 to-blue-500 hover:bg-white/10 flex-1"
+                      >
                         <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4 mr-2" />
                           Code
@@ -500,7 +474,7 @@ export default function Portfolio() {
                   <div>
                     <label className="block text-white font-semibold mb-2">Name</label>
                     <Input
-                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400"
+                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                       placeholder="Your name"
                     />
                   </div>
@@ -508,7 +482,7 @@ export default function Portfolio() {
                     <label className="block text-white font-semibold mb-2">Email</label>
                     <Input
                       type="email"
-                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400"
+                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -517,7 +491,7 @@ export default function Portfolio() {
                 <div>
                   <label className="block text-white font-semibold mb-2">Subject</label>
                   <Input
-                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400"
+                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                     placeholder="Project inquiry"
                   />
                 </div>
@@ -525,7 +499,7 @@ export default function Portfolio() {
                 <div>
                   <label className="block text-white font-semibold mb-2">Message</label>
                   <Textarea
-                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 min-h-32"
+                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 min-h-32 placeholder:text-white/50"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -548,14 +522,29 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-white/70 mb-4">© 2025 Tomás Santos. All rights reserved.</p>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-white/50 hover:text-white transition-colors duration-300">
-              <Github className="w-5 h-5" />
+            <a
+              href="https://github.com/TomasVSantos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
+            >
+              <Github className="w-6 h-6" />
             </a>
-            <a href="#" className="text-white/50 hover:text-white transition-colors duration-300">
-              <Linkedin className="w-5 h-5" />
+            <a
+              href="https://www.linkedin.com/in/tomasvsantos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
+            >
+              <Linkedin className="w-6 h-6" />
             </a>
-            <a href="#" className="text-white/50 hover:text-white transition-colors duration-300">
-              <Mail className="w-5 h-5" />
+            <a
+              href="mailto:tomasvsantos04@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
+            >
+              <Mail className="w-6 h-6" />
             </a>
           </div>
         </div>
