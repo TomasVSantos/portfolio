@@ -20,10 +20,21 @@ import {
   Send,
   MapPin,
   Calendar,
+  Check,
+  X,
 } from "lucide-react";
+import emailjs from "emailjs-com";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
@@ -109,6 +120,48 @@ export default function Portfolio() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "lol nice try";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "lol nice try";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "lol nice try";
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: "tomasvsantos04@gmail.com",
+        },
+        publicKey
+      );
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus("idle"), 5000);
     }
   };
 
@@ -469,11 +522,15 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <Card className="backdrop-blur-md bg-white/10 border-white/20 rounded-2xl p-8 shadow-2xl">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-white font-semibold mb-2">Name</label>
                     <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
                       className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                       placeholder="Your name"
                     />
@@ -482,6 +539,10 @@ export default function Portfolio() {
                     <label className="block text-white font-semibold mb-2">Email</label>
                     <Input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                       className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                       placeholder="your.email@example.com"
                     />
@@ -491,6 +552,10 @@ export default function Portfolio() {
                 <div>
                   <label className="block text-white font-semibold mb-2">Subject</label>
                   <Input
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    required
                     className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
                     placeholder="Project inquiry"
                   />
@@ -499,17 +564,45 @@ export default function Portfolio() {
                 <div>
                   <label className="block text-white font-semibold mb-2">Message</label>
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                     className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 min-h-32 placeholder:text-white/50"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
+                {submitStatus === "success" && (
+                  <div className="flex items-center space-x-2 text-green-400 bg-green-400/10 border border-green-400/30 rounded-lg p-3">
+                    <Check className="w-5 h-5" />
+                    <span>Message sent successfully! I'll get back to you soon.</span>
+                  </div>
+                )}
+
+                {submitStatus === "error" && (
+                  <div className="flex items-center space-x-2 text-red-400 bg-red-400/10 border border-red-400/30 rounded-lg p-3">
+                    <X className="w-5 h-5" />
+                    <span>Failed to send message. Please try again or email me directly.</span>
+                  </div>
+                )}
+
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 mr-2 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </Card>
