@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Github,
   Linkedin,
@@ -20,12 +20,12 @@ import {
   Send,
   MapPin,
   Calendar,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("hero")
-  const { scrollYProgress } = useScroll()
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+  const [activeSection, setActiveSection] = useState("hero");
+  const { scrollYProgress } = useScroll();
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const projects = [
     {
@@ -68,79 +68,79 @@ export default function Portfolio() {
       codeUrl: "#",
       featured: false,
     },
-  ]
+  ];
 
   const skills = [
-    { name: "JavaScript", level: 95, icon: Code },
-    { name: "React/Next.js", level: 90, icon: Globe },
-    { name: "Node.js", level: 85, icon: Database },
-    { name: "TypeScript", level: 88, icon: Code },
-    { name: "Python", level: 80, icon: Code },
-    { name: "UI/UX Design", level: 75, icon: Palette },
-    { name: "MongoDB", level: 82, icon: Database },
-    { name: "PostgreSQL", level: 78, icon: Database },
-  ]
+    { name: "JavaScript", icon: Code },
+    { name: "TypeScript", icon: Code },
+    { name: "React", icon: Globe },
+    { name: "Node.js", icon: Database },
+    { name: "Python", icon: Code },
+    { name: ".NET", icon: Code },
+    { name: "Swift", icon: Code },
+    { name: "SQL", icon: Database },
+  ];
 
   const experiences = [
     {
       id: 1,
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Solutions",
-      period: "2022 - Present",
-      location: "San Francisco, CA",
+      title: "Junior Software Developer",
+      company: "Host Hotel Systems, Lda",
+      period: "Apr. 2024 - Present",
+      location: "Torres Vedras, Lisbon, Portugal",
       description:
-        "Led development of scalable web applications serving 100K+ users. Mentored junior developers and implemented CI/CD pipelines.",
-      technologies: ["React", "Node.js", "AWS", "Docker"],
+        "Led front-end development for a large-scale Property Management System (>3M LOC) using React, delivering critical UI features that streamlined hotel operations for thousands of users. Built and integrated new .NET API endpoints and SQL-backed features to support core platform functionality, contributing to full-stack enhancements. Worked closely with the CTO and PMs to define and deliver product features, acting as one of the primary front-end points of contact within the team.",
+      technologies: ["React", ".NET", "SQL"],
     },
     {
       id: 2,
-      title: "Frontend Developer",
-      company: "Digital Innovations",
-      period: "2020 - 2022",
-      location: "New York, NY",
+      title: "Intern, iOS Developer",
+      company: "eAvio d.o.o",
+      period: "Sep. 2023 - Dec. 2023",
+      location: "Maribor, Slovenia",
       description:
-        "Developed responsive web applications and improved user experience metrics by 40%. Collaborated with design teams on UI/UX improvements.",
-      technologies: ["Vue.js", "TypeScript", "Sass", "Figma"],
+        "Contributed as an iOS Developer Intern at eAvio d.o.o, a specialized provider of aviation software solutions, as part of an Erasmus program. Enhanced eFlyBag app for in-flight document management and updated and integrated eLoadSheet into eFlyBag, enriching its capabilities. Conducted debugging, testing, and optimizations for both apps while contributing innovative ideas in team meetings.",
+      technologies: ["Swift"],
     },
     {
       id: 3,
-      title: "Junior Web Developer",
-      company: "StartupXYZ",
-      period: "2019 - 2020",
-      location: "Austin, TX",
+      title: "Intern, Web Developer",
+      company: "Fatias Urbanas, Lda",
+      period: "Jan. 2023 - Mar. 2023",
+      location: "Torres Vedras, Lisbon, Portugal",
       description:
-        "Built and maintained company website and internal tools. Participated in agile development processes and code reviews.",
+        "Collaborated with Fatias Urbanas Lda, a local restaurant, to design and develop a user-friendly website. Created and implemented a responsive and visually appealing website for the restaurant, utilizing web development skills to enhance online presence and customer engagement. Worked closely with the restaurant team to ensure the website met their specific needs and branding.",
       technologies: ["HTML", "CSS", "JavaScript", "PHP"],
     },
-  ]
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "projects", "skills", "experience", "contact"]
-      const scrollPosition = window.scrollY + 100
+      const sections = ["hero", "projects", "skills", "experience", "contact"];
+      const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element
+          const { offsetTop, offsetHeight } = element;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
@@ -162,7 +162,7 @@ export default function Portfolio() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Portfolio
+                Tomás Santos
               </motion.div>
               <div className="hidden md:flex space-x-8">
                 {["hero", "projects", "skills", "experience", "contact"].map((section) => (
@@ -198,7 +198,11 @@ export default function Portfolio() {
               className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 p-1"
             >
               <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                <Code className="w-16 h-16 text-white" />
+                <img
+                  src="https://6b4ysh6u19.ufs.sh/f/Q1LXecKPH6vKaXDjg6TFb6lPH3z29Kokg1QNtcYXWqjvuRrJ"
+                  alt="Tomás Santos"
+                  className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center"
+                />
               </div>
             </motion.div>
 
@@ -208,7 +212,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              John Developer
+              Tomás Santos
             </motion.h1>
 
             <motion.p
@@ -217,7 +221,7 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Full Stack Developer crafting beautiful, functional, and user-centered digital experiences
+              Full Stack Developer and UI/UX Enthusiast
             </motion.p>
 
             <motion.div
@@ -235,7 +239,7 @@ export default function Portfolio() {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
+                className="border-white/30 text-gradient-to-r from-purple-500 to-blue-500 hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
               >
                 Get In Touch
               </Button>
@@ -248,19 +252,25 @@ export default function Portfolio() {
               transition={{ duration: 0.8, delay: 1 }}
             >
               <a
-                href="#"
+                href="https://github.com/TomasVSantos"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/tomasvsantos/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="mailto:tomasvsantos04@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors duration-300 transform hover:scale-110"
               >
                 <Mail className="w-6 h-6" />
@@ -372,7 +382,7 @@ export default function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => {
-              const IconComponent = skill.icon
+              const IconComponent = skill.icon;
               return (
                 <motion.div
                   key={skill.name}
@@ -388,19 +398,9 @@ export default function Portfolio() {
                       <IconComponent className="w-full h-full text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-3">{skill.name}</h3>
-                    <div className="w-full bg-white/20 rounded-full h-2 mb-2">
-                      <motion.div
-                        className="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                      />
-                    </div>
-                    <span className="text-white/70 text-sm">{skill.level}%</span>
                   </Card>
                 </motion.div>
-              )
+              );
             })}
           </div>
         </div>
@@ -546,7 +546,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-white/20">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-white/70 mb-4">© 2024 John Developer. All rights reserved.</p>
+          <p className="text-white/70 mb-4">© 2025 Tomás Santos. All rights reserved.</p>
           <div className="flex justify-center space-x-6">
             <a href="#" className="text-white/50 hover:text-white transition-colors duration-300">
               <Github className="w-5 h-5" />
@@ -561,5 +561,5 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
