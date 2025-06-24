@@ -22,7 +22,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build site
-        run: npm run build && npm run export # for static export
+        run: npm run build
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler pages deploy ./out --project-name=portfolio
