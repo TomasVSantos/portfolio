@@ -166,10 +166,10 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-blue-900 to-indigo-900 relative overflow-hidden">
       {/* Animated Background */}
       <motion.div className="absolute inset-0 opacity-30" style={{ y: backgroundY }}>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
         <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
       </motion.div>
@@ -218,7 +218,7 @@ export default function Portfolio() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 p-1"
+              className="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 p-1"
             >
               <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
                 <img
@@ -255,14 +255,14 @@ export default function Portfolio() {
             >
               <Button
                 onClick={() => scrollToSection("projects")}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-800 hover:to-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 View My Work
               </Button>
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="outline"
-                className="border-white/30 text-gradient-to-r from-purple-500 to-blue-500 hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
+                className="border-white/30 text-gradient-to-r from-emerald-500 to-blue-500 hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300"
               >
                 Get In Touch
               </Button>
@@ -354,7 +354,7 @@ export default function Portfolio() {
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-2xl font-bold text-white">{project.title}</h3>
                       {project.featured && (
-                        <Badge className="bg-gradient-to-r from-purple-500 to-blue-500 text-white">Featured</Badge>
+                        <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white">Featured</Badge>
                       )}
                     </div>
                     <p className="text-white/70 mb-4 leading-relaxed">{project.description}</p>
@@ -375,7 +375,7 @@ export default function Portfolio() {
                       <Button
                         asChild
                         variant="outline"
-                        className="border-white/30 text-gradient-to-r from-purple-500 to-blue-500 hover:bg-white/10 flex-1"
+                        className="border-white/30 text-gradient-to-r from-emerald-500 to-blue-500 hover:bg-white/10 flex-1"
                       >
                         <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4 mr-2" />
@@ -421,7 +421,7 @@ export default function Portfolio() {
                   className="group"
                 >
                   <Card className="backdrop-blur-md bg-white/10 border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 p-3 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400 p-3 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-full h-full text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-3">{skill.name}</h3>
@@ -449,7 +449,7 @@ export default function Portfolio() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-blue-500 hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-blue-500 hidden md:block" />
 
             <div className="space-y-12">
               {experiences.map((experience, index) => (
@@ -462,13 +462,13 @@ export default function Portfolio() {
                   className="relative"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full hidden md:block" />
+                  <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full hidden md:block" />
 
                   <Card className="backdrop-blur-md bg-white/10 border-white/20 rounded-2xl p-6 md:ml-16 hover:bg-white/15 transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
                         <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
-                        <p className="text-xl text-purple-300 font-semibold">{experience.company}</p>
+                        <p className="text-xl text-emerald-300 font-semibold">{experience.company}</p>
                       </div>
                       <div className="flex flex-col md:items-end mt-2 md:mt-0">
                         <div className="flex items-center text-white/70 mb-1">
@@ -531,7 +531,7 @@ export default function Portfolio() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
+                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-emerald-400 focus:ring-emerald-400 placeholder:text-white/50"
                       placeholder="Your name"
                     />
                   </div>
@@ -543,7 +543,7 @@ export default function Portfolio() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
+                      className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-emerald-400 focus:ring-emerald-400 placeholder:text-white/50"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -556,7 +556,7 @@ export default function Portfolio() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 placeholder:text-white/50"
+                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-emerald-400 focus:ring-emerald-400 placeholder:text-white/50"
                     placeholder="Project inquiry"
                   />
                 </div>
@@ -568,13 +568,13 @@ export default function Portfolio() {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-purple-400 focus:ring-purple-400 min-h-32 placeholder:text-white/50"
+                    className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-emerald-400 focus:ring-emerald-400 min-h-32 placeholder:text-white/50"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
                 {submitStatus === "success" && (
-                  <div className="flex items-center space-x-2 text-green-400 bg-green-400/10 border border-green-400/30 rounded-lg p-3">
+                  <div className="flex items-center space-x-2 text-emerald-400 bg-emerald-400/10 border border-emerald-400/30 rounded-lg p-3">
                     <Check className="w-5 h-5" />
                     <span>Message sent successfully! I'll get back to you soon.</span>
                   </div>
@@ -590,7 +590,7 @@ export default function Portfolio() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-800 hover:to-blue-600 text-white py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isSubmitting ? (
                     <>
